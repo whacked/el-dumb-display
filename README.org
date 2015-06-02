@@ -1,5 +1,8 @@
 
+* usage
 
 run with =electron el-dumb-display= from directory above, or =electron .=
 
+* example test
 
+curl http://localhost:9999/ --data "html=<h1>hello</h1>"
