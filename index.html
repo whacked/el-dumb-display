@@ -5,17 +5,20 @@
             hello world
         </title>
 
-        <!--
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
         <script>
             jQuery.noConflict();
         </script>
-        -->
 
         <script>
-        function set_content(encoded) {
+        function set_content(encoded, append) {
             var el = document.getElementById("content");
-            el.innerHTML = unescape(encoded);
+            if(append && parseInt(append)) {
+                var base = el.innerHTML;
+            } else {
+                var base = '';
+            }
+            el.innerHTML = base+unescape(encoded);
         }
 
         </script>
@@ -24,6 +27,19 @@
             * {
                 padding: 0;
                 margin: 0;
+                font-family: sans-serif;
+                font-size: 10pt;
+            }
+
+            table {
+                width: 100%;
+            }
+
+            footer {
+                border: 1px dashed gray;
+                margin: 1em;
+                padding: 0.5em;
+                background: lightgray;
             }
 
 
@@ -31,16 +47,14 @@
     </head>
     <body>
 
-        <h1>blah blah</h1>
+        <div id="content"></div>
+        <footer>
+            <p>
+                we are using io.js <script>document.write(process.version)</script>
+                and electron <script>document.write(process.versions['electron'])</script>.
+            </p>
+        </footer>
 
-        <p>
-            we are using io.js <script>document.write(process.version)</script>
-            and electron <script>document.write(process.versions['electron'])</script>.
-        </p>
-
-        <div id="content">
-
-        </div>
     </body>
 </html>
 
