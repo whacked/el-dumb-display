@@ -32,7 +32,7 @@ app.on('ready', function() {
             });
             req.on("end", function() {
                 var q = qs.parse(body);
-                if(q.html) {
+                if(q.html !== undefined) {
                     mainwindow.webContents.executeJavaScript('set_content("'+escape(q.html)+'",'+(q.append?1:0)+')');
                 } else {
                     console.log("NO MATCH: " + body);
